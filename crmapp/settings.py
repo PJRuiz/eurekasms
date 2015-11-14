@@ -12,9 +12,22 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 MAIN_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
+def get_env_variable(var_name):
+    """ Get the environment variable or return exception """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
+ENV_ROLE = get_env_variable('ENV_ROLE')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +37,12 @@ MAIN_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 SECRET_KEY = 'c8peobos)u$w0#h0#f#un^yh)nkl2zmr%cku0fct6b4&xr&-$+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
+if ENV_ROLE == 'development':
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
