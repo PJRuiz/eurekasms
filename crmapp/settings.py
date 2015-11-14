@@ -28,24 +28,24 @@ def get_env_variable(var_name):
 
 ENV_ROLE = get_env_variable('ENV_ROLE')
 
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c8peobos)u$w0#h0#f#un^yh)nkl2zmr%cku0fct6b4&xr&-$+'
+SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+SMS_DB_PASS = False
+
 
 if ENV_ROLE == 'development':
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
+    SMS_DB_PASS = get_env_variable('SMS_DB_PASS')
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'smsdb',
         'USER': 'postgres',
-        'PASSWORD': 'pippa12193',
+        'PASSWORD': SMS_DB_PASS,
         'HOST': '/tmp',
         'PORT': '5432',
     }
