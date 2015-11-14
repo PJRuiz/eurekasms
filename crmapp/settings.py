@@ -106,6 +106,10 @@ DATABASES = {
     }
 }
 
+if ENV_ROLE == 'production':
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+
 # if ON_HEROKU == '1':
     # Parse database configuration from $DATABASE_URL
 # import dj_database_url
