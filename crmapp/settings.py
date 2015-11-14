@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MAIN_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,12 +75,30 @@ WSGI_APPLICATION = 'crmapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+#Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'smsdb',
+        'USER': 'postgres',
+        'PASSWORD': 'pippa12193',
+        'HOST': '/tmp',
+        'PORT': '5432',
     }
 }
+
+
+# if ON_HEROKU == '1':
+    # Parse database configuration from $DATABASE_URL
+# import dj_database_url
+# DATABASES['default'] =  dj_database_url.config()
+
+
+# # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# # Allow all host headers
+# ALLOWED_HOSTS = ['*']
 
 
 # Internationalization
@@ -100,3 +119,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    os.path.join(MAIN_DIR, 'templates'),
+)
+
+STATICFILES_DIRS = (
+    os.path.join(MAIN_DIR, 'static'),
+)
+
+STATIC_ROOT = 'staticfiles'
+
