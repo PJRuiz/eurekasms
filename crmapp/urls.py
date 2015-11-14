@@ -13,9 +13,31 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = [
+from marketing.views import HomePage
+
+urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-]
+    # Marketing pages
+    url(r'^$', HomePage.as_view(), name="home"),
+
+    # Subscriber related URLs
+
+
+    # Admin URL
+
+
+    # Login/Logout URLs
+
+
+    # Account related URLs
+
+
+    # Contact related URLS
+
+
+    # Communication related URLs
+
+)
