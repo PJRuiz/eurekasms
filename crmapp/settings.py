@@ -14,7 +14,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from django.core.exceptions import ImproperlyConfigured
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 MAIN_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
@@ -109,6 +112,9 @@ DATABASES = {
 if ENV_ROLE == 'production':
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
+
+    # Enable Persistent Connections
+    DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # if ON_HEROKU == '1':
     # Parse database configuration from $DATABASE_URL
