@@ -18,6 +18,9 @@ from django.contrib import admin
 
 from marketing.views import HomePage
 
+admin.autodiscover()
+
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # Marketing pages
@@ -29,7 +32,7 @@ urlpatterns = patterns('',
 
 
     # Admin URL
-
+    (r'^admin/', include(admin.site.urls)),
 
     # Login/Logout URLs
 
