@@ -25,6 +25,8 @@ urlpatterns = patterns('',
 
     # Subscriber related URLs
 
+    url(r'^signup/$','subscribers.views.subscriber_new', name='sub_new'),
+
 
     # Admin URL
 
