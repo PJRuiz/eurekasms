@@ -18,13 +18,16 @@ class AddressMixin(forms.ModelForm):
 
 class SubscriberForm(AddressMixin, UserCreationForm):
     first_name = forms.CharField(
-        required=True, widget=forms.TextInput(attrs={'class':'form-control'})
+        required=True, 
+        widget=forms.TextInput(attrs={'class':'form-control'})
     )
     last_name = forms.CharField(
-        required=True, widget=forms.TextInput(attrs={'class':'form-control'})
+        required=True, 
+        widget=forms.TextInput(attrs={'class':'form-control'})
     )
     email = forms.EmailField(
-        required=True, widget=forms.TextInput(attrs={'class':'form-control'})
+        required=True, 
+        widget=forms.TextInput(attrs={'class':'form-control'})
     )
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class':'form-control'})
