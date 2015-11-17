@@ -14,6 +14,9 @@ from .forms import AccountForm
 
 from .models import Account
 
+from crmapp.contacts.models import Contact
+
+
 class AccountList(ListView):
     model = Account
     paginate_by = 12
