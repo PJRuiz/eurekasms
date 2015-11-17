@@ -20,6 +20,8 @@ from marketing.views import HomePage
 from accounts.views import AccountList
 from accounts.urls import account_urls
 from contacts.urls import contact_urls
+from communications.urls import comm_urls
+
 
 
 admin.autodiscover()
@@ -66,5 +68,7 @@ urlpatterns = patterns('',
 
 
     # Communication related URLs
+    url(r'^comm/(?P<uuid>[\w-]+)/', include(comm_urls)),
+
 
 )
