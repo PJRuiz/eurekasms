@@ -16,6 +16,9 @@ from .models import Account
 
 from crmapp.contacts.models import Contact
 
+from crmapp.communications.models import Communication
+
+
 
 class AccountList(ListView):
     model = Account
@@ -48,10 +51,14 @@ def account_detail(request, uuid):
     if account.owner != request.user:
             return HttpResponseForbidden()
     contacts = Contact.objects.filter(account=account)
+    communications = Communication.objects.filter(
+        account=account).order_by('-created_on')
 
     variables = {
         'account': account,
         'contacts': contacts,
+        'communications': communications,
+
 
     }
 
