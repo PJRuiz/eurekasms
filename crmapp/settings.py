@@ -38,7 +38,7 @@ ENV_ROLE = get_env_variable('ENV_ROLE')
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SMS_DB_PASS = False
 
