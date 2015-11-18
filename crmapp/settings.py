@@ -65,7 +65,6 @@ INSTALLED_APPS = (
     'crmapp.contacts',
     'crmapp.communications',
     'pipeline',
-    'csscompressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -187,6 +186,7 @@ LOGIN_REDIRECT_URL = '/account/list/'
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.cssmin.CSSMinCompressor'
+
 
 PIPELINE_CSS = {
     'site_css': {
