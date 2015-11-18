@@ -27,7 +27,7 @@ class CommunicationForm(forms.ModelForm):
             ),
             'date': forms.DateInput(
                 attrs={
-                    'placeholder':'Date', 
+                    'placeholder':'Date YYYY-MM-DD', 
                     'class':'form-control'
                 }
             ),
