@@ -186,7 +186,7 @@ LOGIN_REDIRECT_URL = '/account/list/'
 # django-pipeline config
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
-PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.cssmin.CSSMinCompressor'
 
 PIPELINE_CSS = {
     'site_css': {
