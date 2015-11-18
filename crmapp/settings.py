@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'crmapp.accounts',
     'crmapp.contacts',
     'crmapp.communications',
+    'pipeline',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -180,4 +181,33 @@ STRIPE_PUBLISHABLE_KEY = get_env_variable('STRIPE_PUBLISHABLE_KEY')
 SUBSCRIPTION_PRICE = 1500
 
 LOGIN_REDIRECT_URL = '/account/list/'
+
+# django-pipeline config
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
+
+PIPELINE_CSS = {
+    'site_css': {
+        'source_filenames': (
+          'css/bootstrap.min.css',
+          'css/app.css',
+        ),
+        'extra_context': {
+            'media': 'screen',
+        },
+        'output_filename': 'css/site.css',
+    },
+}
+
+PIPELINE_JS = {
+    'site_js': {
+        'source_filenames': (
+          'js/jquery.min.js',
+          'js/bootstrap.min.js',
+          'js/app.js',
+        ),
+        'output_filename': 'js/site.js',
+    }
+}
 
