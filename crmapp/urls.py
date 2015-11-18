@@ -21,8 +21,7 @@ from accounts.views import AccountList
 from accounts.urls import account_urls
 from contacts.urls import contact_urls
 from communications.urls import comm_urls
-
-
+from communications.views import CommDelete
 
 admin.autodiscover()
 
@@ -73,6 +72,9 @@ urlpatterns = patterns('',
     ),
     url(r'^comm/(?P<uuid>[\w-]+)/', 
         include(comm_urls)
+    ),
+    url(r'^comm/(?P<pk>[\w-]+)/delete/$',
+        CommDelete.as_view(), name='comm_delete'
     ),
 
 
